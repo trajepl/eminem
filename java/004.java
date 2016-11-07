@@ -45,8 +45,6 @@ public class Solution {
             return (Kth(nums1, nums2, 0, 0, len1, len2, k) + Kth(nums1, nums2, 0, 0, len1, len2, k + 1)) / 2;
         else 
             return Kth(nums1, nums2, 0, 0, len1, len2, k+1);
-            
-        
     }
     
     public double Kth(int[] a, int[] b, int start1, int start2, int len1, int len2, int k) {
