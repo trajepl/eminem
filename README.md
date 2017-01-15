@@ -1,1 +1,1 @@
-Eminem: rapper
+Eminem: an rapper
