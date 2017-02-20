@@ -1,4 +1,4 @@
-Method1: (not better than Method2)
+// Method1: (not better than Method2)
 
 public class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
@@ -34,7 +34,7 @@ public class Solution {
     }
 }
 
-Method2: O(log(m+n))
+// Method2: O(log(m+n))
 
 public class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
