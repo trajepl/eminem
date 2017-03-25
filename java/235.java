@@ -18,19 +18,11 @@
 
 public class Solution {
 
-    public TreeNode invertTree(TreeNode root) {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 
-        if(root == null) return root;
-        
+        while ((root.val - p.val) * (root.val - q.val) > 0)
 
-        TreeNode left = root.left;
-
-        
-        root.left = invertTree(root.right);
-
-        root.right = invertTree(left);
-
-        
+            root = p.val < root.val ? root.left : root.right;
 
         return root;
 
