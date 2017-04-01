@@ -43,3 +43,39 @@ public class Solution {
         return Math.abs(left - right) <= 1 && isBalanced(root.left) && isBalanced(root.right);
     }
 }
+
+public class Solution {
+
+    int helper(TreeNode root) {
+
+        if(root == null) return 0;
+
+
+
+        int leftHeight = helper(root.left);
+
+        if(leftHeight == -1) return -1;
+
+        int rightHeight = helper(root.right);
+
+        if(rightHeight == -1) return -1;
+
+
+
+        if(Math.abs(leftHeight - rightHeight) > 1) return -1;
+
+
+
+        return Math.max(leftHeight, rightHeight)+1;
+
+    }
+
+
+
+    public boolean isBalanced(TreeNode root) {
+
+        return helper(root) != -1;
+
+    }
+
+}
