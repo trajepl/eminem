@@ -7,7 +7,7 @@ public class KMP {
         ret[0] = 0;
         for(int i = 1; i < len; i++) {
             while(flag > 0 && s.charAt(i) != s.charAt(flag))
-                flag = ret[flag];
+                flag = ret[flag-1];
             if(s.charAt(i) == s.charAt(flag))
                 flag ++;
 
@@ -29,7 +29,7 @@ public class KMP {
             }
             if(k.charAt(idk) == s.charAt(i)) idk++;
             if(idk == len_k) {
-                System.out.printf("Pattern occurs with shift %d ", i-idk);
+                System.out.printf("Pattern occurs with shift %d ", i-idk+1);
                 return true;
             }
         }
