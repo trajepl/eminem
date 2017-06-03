@@ -9,7 +9,7 @@ public class Solution {
 		for(int i = 1; i < height.length; i++) {
 			if(height[i] > height[s.peek()]) {
 				int bottom = height[s.pop()];
-				while(!s.isEmpty() && height[i] >= height[s.peed()]) {
+				while(!s.isEmpty() && height[i] >= height[s.peek()]) {
 					water += (height[s.peek()] - bottom) * (i - s.peek() - 1);
 					bottom = height[s.pop()];
 				}
