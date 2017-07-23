@@ -46,3 +46,30 @@ public class Solution {
         return sum;
     }
 }
+
+public class Solution {
+    public int maximalRectangle(char[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return 0;
+        int m = matrix.length, n = matrix[0].length, max = 0;
+        
+        int[] heights = new int[n];
+        
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                heights[j] = (matrix[i][j] == '0') ? 0 : heights[j] + 1;
+            }
+            for(int j = 0; j < n; j++) {
+                if(heights[j] == 0) continue;
+                int left = j, right = j;
+                while(left >= 0 && heights[left] >= heights[j]) left--;
+                left++;
+                while(right < n && heights[right] >= heights[j]) right++;
+                right--;
+                
+                int width = right - left + 1;
+                max = Math.max(max, heights[j] * width);
+            }
+        }
+        return max;
+    }
+}
