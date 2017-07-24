@@ -10,7 +10,7 @@ public class TreeTraversal {
     public List<Integer> preOrder(TreeNode root) {
         List<Integer> ret = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode head = root;
+        TreeNode p = root;
 
         while(!stack.isEmpty() || p != null) {
             if(p != null) {
@@ -74,37 +74,20 @@ public class TreeTraversal {
         while(p != null || !stack.isEmpty()) {
             while(p != null) {
                 stack.add(p);
-                   p = p.left;
+                p = p.left;
             }
 
             p = stack.peek();
 
-            if(p.right != null && cur != p.right) 
+            if(p.right != null && cur != p.right) { 
                 p = p.right;
-            else
+            } else {
                 stack.pop();
                 ret.add(p.val);
                 cur = p;
                 p = null;
+            }
         }
         return ret;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
