@@ -25,15 +25,16 @@ public UnionFind {
         return p;
     }
 
-    public connected(int p, int q) {
+    public boolean connected(int p, int q) {
         return find(p) == find(q);
     }
 
-    public union(int p, int q) {
+    public void union(int p, int q) {
         int pID = find(p);
         int qID = find(q);
 
         if(pID == qID) return ;
+
         if (sz[pID] < sz[qID]) {
             id[pID] = qID;
             sz[qID] += sz[pID];
