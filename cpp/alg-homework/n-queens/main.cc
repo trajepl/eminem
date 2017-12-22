@@ -1,42 +1,55 @@
-#include <iostream>
-#include <vector>
+#include<iostream>
+#include<vector>
+
 using namespace std;
 
-void helper(int col, int n, vector<int> &pos, vector<vector<string>> &result,
-            vector<bool> &flagRow, vector<bool> &flag45, vector<bool> &flag135) {
-    if (col == n) {
-        result.emplace_back(n, string(n, '.'));
-        for (int i = 0; i < n; i++)
-            result.back()[pos[i]][i] = 'Q';
-        return;
+bool check(int row, vector<int> &idxqueue) {
+    for(int i = 0; i < row; i++) {
+        if(idxqueue[i] == idxqueue[row] || abs(idxqueue[i]-idxqueue[row]) == row-i)
+            return false;
     }
-    for (int row = 0; row < n; row++) {
-        if (!flagRow[row] && !flag45[row+col] && !flag135[row-col+n-1]) {
-            pos[col] = row;
-            flagRow[row] = flag45[row+col] = flag135[row-col+n-1] = true;
-            helper(col+1, n, pos, result, flagRow, flag45, flag135);
-            flagRow[row] = flag45[row+col] = flag135[row-col+n-1] = false;
-        }
-    }
-    return;
+    return true;
 }
 
-vector<vector<string>> n_queens(int n) {
-    vector<int> pos(n);
-    vector<bool> flagRow(n, false), flag45(2*n-1, false), flag135(2*n-1, false);
-    vector<vector<string>> result;
-    helper(0, n, pos, result, flagRow, flag45, flag135);
-    return result;
+void helper(int n, vector<vector<string>> &ret, vector<int> &idxqueue, int row) {
+    if(row == n) {
+        vector<string> matrix;
+        for(int i = 0; i < n; i++) {
+            string tmp = "";
+            for(int j = 0; j < n; j++) {
+                if(idxqueue[i] == j)
+                    tmp += "q";
+                else tmp += ".";
+            }
+            matrix.emplace_back(tmp);
+        }
+        ret.emplace_back(matrix);
+        return ;
+    } 
+    for(int i = 0; i < n; i++) {
+        idxqueue[row] = i;
+        if(check(row, idxqueue)) {
+            helper(n, ret, idxqueue, row+1);
+        }
+    }
+}
+
+vector<vector<string>> queue(int n) {
+    vector<vector<string>> ret;
+    vector<int> idxqueue(n, -1);
+    helper(n, ret, idxqueue, 0);
+    return ret;
 }
 
 int main() {
-    int n = 8;
-    vector<vector<string>> result = n_queens(n);
-    for (int i = 0; i < result.size(); i++) {
-        cout << "answer #" << i << " for " << n << " queens: \n";
-        for (int j = 0; j < result[i].size(); j++)
-            cout << result[i][j] << endl;
+    int n = 4;
+    vector<vector<string>> rets = queue(n);
+    
+    for(auto &ret: rets) {
+        for(auto &row: ret) {
+            cout << row << endl;
+        }
+        cout << "-----------" << endl;
     }
-
     return 0;
 }
