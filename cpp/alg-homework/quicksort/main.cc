@@ -29,9 +29,7 @@ void print(int *arr, int len) {
     printf("\n");
 }
 
-int main() {
-    int arr[] = {1, 5, 2, 10, 9, 16, 5, 8};
-    int len = sizeof(arr) / sizeof(int);
+void test(int *arr, int len) {
 
     printf("orginal array: ");
     print(arr, len);
@@ -39,5 +37,20 @@ int main() {
     quicksort(arr, 0, len-1);
     printf("sorted array: ");
     print(arr, len);
+}
+
+int main() {
+    int arr[] = {1, 5, 2, 10, 9, 16, 5, 8};
+    int len = sizeof(arr) / sizeof(int);
+    test(arr, len);
+
+    int arr1[] = {5, 2, 10, 9, 16, 5, 8};
+    len = sizeof(arr1) / sizeof(int);
+    test(arr1, len);
+
+    int arr2[] = {9, 6, 5, 8};
+    len = sizeof(arr2) / sizeof(int);
+    test(arr2,len);
+
     return 0;
 }
