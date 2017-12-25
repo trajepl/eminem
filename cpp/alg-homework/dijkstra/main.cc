@@ -48,12 +48,7 @@ vector<int> print_path(int s, int t, vector<int> &path) {
     return path_t;
 }
 
-int main() {
-    int n = 6, s = 1, t = 6;
-    vector<vector<int>> edges = {{1, 2, 100}, {1, 4, 30}, {1, 5, 45},
-                                 {2, 3, 50}, {2, 5, 40}, {2, 6, 25},
-                                 {3, 5, 35}, {3, 6, 15}, {4, 6, 20}};
-    
+void test(int n, int s, int t, vector<vector<int>> edges) {
     vector<vector<pair<int, int>>> g = graph(n, edges);
     vector<int> path(n+1);
 
@@ -63,6 +58,24 @@ int main() {
     for(auto node: path_s)
         cout << node << " ";
     cout << endl;
+}
+
+int main() {
+    int n = 6, s = 1, t = 6;
+    vector<vector<int>> edges = {{1, 2, 100}, {1, 4, 30}, {1, 5, 45},
+                                 {2, 3, 50}, {2, 5, 40}, {2, 6, 25},
+                                 {3, 5, 35}, {3, 6, 15}, {4, 6, 20}};
+    for(auto &edge: edges) 
+        cout << edge[0] << " -> " << edge[1] << ": " << edge[2] << endl;
+   
+    printf("----------------\n");    
+    test(n, s, t, edges);
+    printf("----------------\n");    
+    s = 2; t = 6;
+    test(n, s, t, edges);
+    printf("----------------\n");    
+    s = 3; t = 5;
+    test(n, s, t, edges);
 
     return 0;
 }
