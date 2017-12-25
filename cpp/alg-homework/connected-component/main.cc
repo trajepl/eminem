@@ -38,12 +38,7 @@ void art(int u, int v, int n, vector<vector<int>> &G, vector<vector<pair<int, in
     return;
 }
 
-int main() {
-    int n = 10;
-    vector<vector<int>> edges = {{1, 2}, {1, 4}, {2, 3}, {2, 5}, {2, 7}, {2, 8},
-                                 {3, 4}, {3, 9}, {3,10}, {5, 6}, {5, 7}, {5, 8},
-                                 {7, 8}};
-
+void test(int n, vector<vector<int>> edges) {
     vector<vector<int>> G = graph(n, edges);
 
     vector<vector<pair<int, int>>> result;
@@ -56,5 +51,26 @@ int main() {
         for (int j = 0; j < result[i].size(); j++)
             cout << result[i][j].first << "," << result[i][j].second << endl;
     }
+}
+
+int main() {
+    printf("test 1\n");
+    int n = 10;
+    vector<vector<int>> edges = {{1, 2}, {1, 4}, {2, 3}, {2, 5}, {2, 7}, {2, 8},
+                                 {3, 4}, {3, 9}, {3,10}, {5, 6}, {5, 7}, {5, 8},
+                                 {7, 8}};
+    test(n, edges);
+
+    printf("test 2\n");
+    edges = {{1, 3}, {1, 4}, {2, 3}, {2, 5}, {2, 6}, {2, 8},
+                                 {3, 4}, {3, 9}, {3,10}, {5, 6}, {5, 7}, {5, 8},
+                                 {7, 8}};
+    test(n, edges);
+
+    printf("test 3\n");
+    edges = {{1, 2}, {1, 4}, {2, 3}, {2, 5}, {2, 7}, {2, 8},
+                                 {3, 4}, {3, 6}, {3,8}, {5, 6}, {5, 7}, {5, 8},
+                                 {7, 8}};
+    test(n, edges);
     return 0;
 }
