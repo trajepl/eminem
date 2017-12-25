@@ -58,18 +58,40 @@ void prim(vector<vector<int>> &graph, vector<vector<int>> &T, int n) {
     }
 }
 
-int main() {
-    int n = 6;
-    vector<vector<int>> edges = {{1, 2, 100}, {1, 4, 30}, {1, 5, 45},
-                                 {2, 3, 50}, {2, 5, 40}, {2, 6, 25},
-                                 {3, 5, 35}, {3, 6, 15}, {4, 6, 20}};
-
+void test(int n, vector<vector<int>> edges) {
     vector<vector<int>> g = graph(n, edges);
     vector<vector<int>> ret;
     prim(g, ret, n);
 
     for(auto &edge: ret)
         cout << edge[0] << " " << edge[1] << endl;
+}
+
+
+int main() {
+    int n = 6;
+    vector<vector<int>> edges = {{1, 2, 100}, {1, 4, 30}, {1, 5, 45},
+                                 {2, 3, 50}, {2, 5, 40}, {2, 6, 25},
+                                 {3, 5, 35}, {3, 6, 15}, {4, 6, 20}};
+    for(auto &edge: edges) 
+        cout << edge[0] << " -> " << edge[1] << ": " << edge[2] << endl;
+    test(n, edges);
+
+    cout << "----------" << endl;
+    n = 5;    
+    edges = {{1, 2, 10}, {1, 4, 30}, {1, 5, 45}, {2, 3, 50}, {2, 5, 40}, 
+             {3, 5, 35}, {4, 5, 20}};
+    for(auto &edge: edges) 
+        cout << edge[0] << " -> " << edge[1] << ": " << edge[2] << endl;
+    test(n, edges);
+
+    cout << "----------" << endl;
+    n = 5;    
+    edges = {{1, 2, 10}, {1, 3, 30}, {1, 4, 45}, {2, 3, 50}, {2, 5, 40}, 
+             {3, 5, 35}, {4, 5, 10}};
+    for(auto &edge: edges) 
+        cout << edge[0] << " -> " << edge[1] << ": " << edge[2] << endl;
+    test(n, edges);
 
     return 0;
 }
