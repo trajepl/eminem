@@ -41,8 +41,7 @@ vector<vector<string>> queue(int n) {
     return ret;
 }
 
-int main() {
-    int n = 4;
+void test(int n) {
     vector<vector<string>> rets = queue(n);
     
     for(auto &ret: rets) {
@@ -51,5 +50,19 @@ int main() {
         }
         cout << "-----------" << endl;
     }
+}
+
+int main() {
+    int n = 1;
+    cout << n << " queues" << endl;
+    test(n);
+
+    n = 4;
+    cout << n << " queues" << endl;
+    test(n);
+
+    n = 6;
+    cout << n << " queues" << endl;
+    test(n);
     return 0;
 }
