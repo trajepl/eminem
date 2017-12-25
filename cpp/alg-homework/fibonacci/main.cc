@@ -7,6 +7,8 @@ int fib(int n) {
 }
 
 int main() {
-    printf("%d\n", fib(6));
+    printf("fibonacci(0) %d\n", fib(0));
+    printf("fibonacci(8) %d\n", fib(8));
+    printf("fibonacci(10) %d\n", fib(10));
     return 0;
 }
