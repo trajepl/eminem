@@ -19,8 +19,7 @@ void per(vector<vector<int>> &ret, vector<int> &t, vector<bool> &visited, int le
     }
 }
 
-int main() {
-    int n = 6, len  = 5;
+void test(int n, int len) {
 
     vector<vector<int>> ret;
     vector<int> t;
@@ -35,5 +34,16 @@ int main() {
             cout << ret[i][j] << " ";
         cout << endl;
     }
+}
+
+int main() {
+    int n = 6, len = 1;
+    test(n, len);
+
+    n = 6; len = 2;
+    test(n, len);
+
+    n = 3, len = 3;
+    test(n, len);
     return 0;
 }
