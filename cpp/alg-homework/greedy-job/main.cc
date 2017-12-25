@@ -32,9 +32,7 @@ vector<pair<int, int>> greedy(vector<pair<int, int>> &jobs) {
     return seq;
 }
 
-int main() {
-    vector<pair<int, int>> jobs = {{100, 2}, {10, 1}, {15, 2}, {20, 1}};
-
+void test(vector<pair<int, int>> jobs) {
     cout << "orginal jobs: ";
     for(auto &job: jobs)
         cout << "{" << job.first << "," << job.second << "} ";
@@ -45,6 +43,17 @@ int main() {
     for(auto &job: seq)
         cout << "{" << job.first << "," << job.second << "} ";
     cout << endl;
+}
+
+int main() {
+    vector<pair<int, int>> jobs = {{100, 2}, {10, 1}, {15, 2}, {20, 1}};
+    test(jobs);
+
+    jobs = {{10, 2}, {10, 2}, {15, 2}, {20, 1}};
+    test(jobs);
+
+    jobs = {{10, 2}, {10, 1}, {15, 1}, {20, 2}};
+    test(jobs);
 
     return 0;
 }
