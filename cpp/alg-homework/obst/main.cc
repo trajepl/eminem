@@ -44,9 +44,34 @@ void print_obst(vector<vector<int>> root, int i, int j) {
 int main() {
     vector<double> p = {0, 0.15, 0.10, 0.05, 0.10, 0.20};
     vector<double> q = {0.05, 0.10, 0.05, 0.05, 0.05, 0.10};
-    int n = q.size() ;
+    int n = q.size();
+    cout << "p" << ";q" << endl;
+    for(int i = 0; i < n; i++) 
+        cout << p[i] << ";" << q[i] << endl;
+
     
     vector<vector<int>> root = obst(n , p, q);
+    print_obst(root, 1, n-1);
+
+
+    p = {0, 0.15, 0.10, 0.05, 0.10};
+    q = {0.05, 0.10, 0.05, 0.05, 0.05};
+    n = q.size();
+    cout << "p" << ";q" << endl;
+    for(int i = 0; i < n; i++) 
+        cout << p[i] << ";" << q[i] << endl;
+    
+    root = obst(n , p, q);
+    print_obst(root, 1, n-1);
+
+    p = {0, 0.15, 0.10, 0.05, 0.20, 0.20};
+    q = {0.05, 0.10, 0.05, 0.15, 0.05, 0.10};
+    n = q.size();
+    cout << "p" << ";q" << endl;
+    for(int i = 0; i < n; i++) 
+        cout << p[i] << ";" << q[i] << endl;
+    
+    root = obst(n , p, q);
     print_obst(root, 1, n-1);
     return 0;
 }
