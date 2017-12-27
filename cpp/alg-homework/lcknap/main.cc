@@ -1,14 +1,31 @@
 #include<iostream>
 #include<vector>
+#include<queue>
 
 using namespace std;
 
-int knap(int m, vector<int> &p, vector<int> &w) {
-     vector<int> dp(m+1, 0);
-     for(int i = 0; i < p.size(); i++)
-         for(int j = m; j >= w[i]; j--) 
-             dp[j] = max(dp[j], dp[j-w[i]] + p[i]);
-     return dp[m];
+int lcknap(int m, vector<int> &p, vector<int> &w) {
+    queue<vector<int>> q;
+    q.push({-1, 0, 0});
+    int maxcost = 0;
+    int n = p.size();
+
+    while(!q.empty()) {
+        vector<int> t = q.front();
+        q.pop();
+        int i = t[0] + 1;
+
+        if(t[1] > m) continue;
+        if(t[0] == n-1) {
+            if(maxcost < t[2]) 
+                maxcost = t[2];
+            continue;
+        }
+
+        q.push({i, t[1] + w[i], t[2] + p[i]});
+        q.push({i, t[1], t[2]});
+    }
+    return maxcost;
 }
 
 void test(int m, vector<int> &p, vector<int> &w) {
@@ -17,7 +34,7 @@ void test(int m, vector<int> &p, vector<int> &w) {
     for(int i = 0; i < p.size(); i++)
         cout << "{" << p[i] << "," << w[i] << "} ";
     cout << endl;
-    cout << "max value: " << knap(m ,p, w) << endl;
+    cout << "max value: " << lcknap(m ,p, w) << endl;
     cout << "----------" << endl;
 }
 
