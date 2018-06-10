@@ -5,19 +5,21 @@
 using namespace std;
 
 struct compare {
-    bool operator()(const int &l, const int &r) {return l < r;}
+    bool operator()(const pair<int, int> &l, const pair<int, int> &r) {
+        return l.second > r.second;
+    }
 };
 
 int main() {
-    priority_queue<int, vector<int>, compare> q;
-    q.push(3);
-    q.push(1);
-    q.push(5);
+    priority_queue<pair<int, int>, vector<pair<int, int>>, compare> q;
+    q.push(make_pair(1,2));
+    q.push(make_pair(1,1));
+    q.push(make_pair(1,3));
+    q.push(make_pair(2,2));
 
     while(!q.empty()) {
-        cout << q.top() << " ";
+        cout << q.top().first << " " << q.top().second << endl;
         q.pop();
     }
-    cout << endl; 
     return 0;
 }
